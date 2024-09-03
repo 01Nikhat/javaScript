@@ -32,7 +32,7 @@ const data = function () {
 data();
 //undefined
 const dataval = ()=> {
-    let name = "nikki";
+    let name = "nik";
     console.log(this.name);
     
 }
