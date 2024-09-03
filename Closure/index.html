@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="orange">ORANGE</button>
+    <button id="green">GREEN</button>
+    <button id="yellow">YELLOW</button>
+    <button id="pink">PINK</button>
+</body>
+
+<script>
+    //without closure
+    document.getElementById("orange").onclick = function () {
+        document.body.style.backgroundColor = `orange`
+    }
+    document.getElementById("green").onclick = function () {
+        document.body.style.backgroundColor = `green`
+    }
+    document.getElementById("yellow").onclick = function () {
+        document.body.style.backgroundColor = `yellow`
+    }
+    document.getElementById("pink").onclick = function () {
+        document.body.style.backgroundColor = `pink`
+    }
+    //we have to write every time the code again and again for different button 
+
+
+    //with closure 
+    function clickHandler(color) {
+        //document.body.style.backgroundColor = `${color}`
+        //here return function represent the closure property
+        return function (){
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+    document.getElementById('yellow').onclick = clickHandler("yellow")
+    document.getElementById('pink').onclick = clickHandler("pink")
+</script>
+</html>
