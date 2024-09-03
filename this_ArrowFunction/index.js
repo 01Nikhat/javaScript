@@ -11,7 +11,8 @@ const user = {
 
 user.GetData();
 
-//we can't use this inside function
+//console log doesn't print this inside function
+
 
 //ex 1
 
@@ -44,3 +45,21 @@ const dataval1 = ()=> console.log("nikki");
     
 const dataval2 = ()=> console.log({username:"nikki"});
 dataval2()
+
+//call, this
+//call contain refernce of the function because without call setUsername will be called but after execution 
+//it will terminate from call stack so to contain the reference we use call()
+function setUserName(username) {
+    //in future ,here complex DB present and we want to fetch the username
+    this.username = username
+    console.log("setUserName function called");  
+}
+
+function createUser(username,email,password) {
+    setUserName.call(this,username)// here this containing the data of setUsername()
+    this.email = email
+    this.password = password
+
+}
+const result = new createUser("nikhat","nik@google.com","123")
+console.log(result);
